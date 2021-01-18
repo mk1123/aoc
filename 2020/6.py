@@ -10,9 +10,10 @@ with open("input_6.txt") as f:
 
     unique_question_count = 0
     for group in groups:
-        curr_questions = set()
-        for line in group:
-            curr_questions.update(set(line.strip()))
+        curr_questions = set(group[0].strip())
+        for i in range(1, len(group)):
+            line = group[i]
+            curr_questions = curr_questions.intersection(set(line.strip()))
         unique_question_count += len(curr_questions)
 
     print(unique_question_count)
